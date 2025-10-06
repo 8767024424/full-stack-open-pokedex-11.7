@@ -1,13 +1,27 @@
 // eslint.config.js
 
+import globals from "globals";
+
 export default [
-  // This configuration includes the ESLint recommended rules
   {
-    ignores: ["node_modules/", "dist/"], // Add any folders/files you want to ignore
+    // 1. Files/Directories to ignore
+    ignores: ["node_modules/", "dist/"], 
+  },
+  {
+    // 2. Configuration for all JavaScript files
+    languageOptions: {
+      globals: {
+        ...globals.browser, // Add browser global variables (e.g., window, document)
+        ...globals.node,   // Add Node.js global variables (e.g., require, module)
+      },
+      sourceType: "module",
+      ecmaVersion: 2022
+    },
+    // 3. Recommended rules
     rules: {
-      // You can add project-specific rules here
-      // For example, to ensure semicolons are not required:
-      // "semi": ["error", "never"]
+      // Add any specific rules your project needs here
+      // For example, to enable the 'recommended' ruleset:
+      // ...require('eslint').configs.recommended.rules 
     }
   }
 ];
