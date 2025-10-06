@@ -1,0 +1,20 @@
+{
+  "name": "full-stack-open-pokedex11.7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+"scripts": {
+  "start": "node index.js",
+  "lint": "eslint .",
+  "build": "echo 'Build successful'", 
+  "test": "jest",                   
+  "dev": "..." 
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.37.0",
+    "jest": "^30.2.0"
+  }
+}
