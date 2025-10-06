@@ -3,7 +3,7 @@ name: Deployment pipeline
 on:
   push:
     branches:
-      - master # or 'main'
+      - master # Use 'main' if your default branch is named 'main'
 
 jobs:
   simple_deployment_pipeline:
@@ -12,19 +12,21 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-
-      - name: npm install
-        run: npm install
-
+          # Use a stable Node.js version consistent with your project
+          node-version: '20' 
+      
+      # 1. Install dependencies (Using 'npm ci' to resolve permission issues)
+      - name: npm ci install
+        run: npm ci # 'npm ci' is faster and more reliable than 'npm install' in CI
+        
+      # 2. Lint the code (This should now pass or fail based on actual code errors)
       - name: lint
         run: npm run lint
-
-      - name: build  # <-- Added build step
+        
+      # 3. Build the code (The new step requested)
+      - name: build
         run: npm run build
-
-      - name: test   # <-- Added test step, which is intended to fail here
+        
+      # 4. Test the code (The new step requested, which you know will fail initially)
+      - name: test
         run: npm run test
-
-      - name: Complete job
-        run: echo "Job finished"
